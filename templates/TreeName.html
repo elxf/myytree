@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="TreeName.css" />
+    <title>나의 나무 이름 짓기</title>
+  </head>
+  <body>
+    <div class="outer-container">
+      <section class="TreeName-form">
+        <h1>나의 나무 이름 짓기</h1>
+        <form id="treeNameForm">
+          <div class="int-area">
+            <input
+              type="text"
+              name="treeName"
+              id="treeName"
+              autocomplete="off"
+              required
+            />
+            <label for="treeName">나무 이름</label>
+          </div>
+          <div class="btn-area">
+            <button type="submit">확인</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <script>
+      document
+        .getElementById('treeNameForm')
+        .addEventListener('submit', function (event) {
+          event.preventDefault(); // 기본 폼 제출 방지
+
+          // 입력된 나무 이름 가져오기
+          const treeName = document.getElementById('treeName').value;
+
+          // MyTree.html로 이동하면서 쿼리 문자열에 이름 전달
+          window.location.href = `MyTree.html?name=${encodeURIComponent(
+            treeName
+          )}`;
+        });
+    </script>
+  </body>
+</html>

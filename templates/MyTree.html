@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="MyTree.css" />
+    <title>나의 나무</title>
+  </head>
+  <body>
+    <h1 id="tree-name">나의 나무</h1>
+
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/7105/7105071.png"
+      alt="나무 그림이 준비중입니다."
+      class="tree-image"
+    />
+
+    <div class="Rank">
+      <a href="Rank.html">
+        <img src="rank-icon.png" alt="랭크" />
+      </a>
+    </div>
+
+    <div class="Coin">
+      <img src="coin-icon.png" alt="코인" />
+    </div>
+
+    <div class="activityList">
+      <a href="Check.html">
+        <img src="activity-list-icon.png" alt="활동 목록" />
+      </a>
+    </div>
+
+    <div class="Deco">
+      <a href="Deco.html">
+        <img src="tree-icon.png" alt="장식 구입" />
+      </a>
+    </div>
+
+    <script>
+      // URL에서 쿼리 문자열 가져오기
+      const urlParams = new URLSearchParams(window.location.search);
+      const treeName = urlParams.get('name'); // 'name' 파라미터 추출
+
+      // 추출한 이름이 있을 경우 제목에 설정
+      if (treeName) {
+        document.getElementById('tree-name').textContent = treeName;
+      }
+    </script>
+  </body>
+</html>
