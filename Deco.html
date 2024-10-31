@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Deco.css" />
+    <title>나무 꾸미기</title>
+  </head>
+  <body>
+    <h1>나무 꾸미기</h1>
+    <div class="coin-count" id="coinCount">코인: 5</div>
+
+    <div class="item-container" id="itemContainer">
+      <!-- 아이템이 여기에 자동으로 추가됩니다 -->
+    </div>
+
+    <script>
+      // 초기 코인 설정
+      let coins = 5;
+
+      // 미리 정의된 아이템 목록
+      const items = [
+        {
+          image:
+            'https://w7.pngwing.com/pngs/154/45/png-transparent-christmas-cookie-christmas-cookie-biscuit-snowman-cookies-fictional-character-christmas-cookie-cake-thumbnail.png',
+          price: 1,
+        },
+        {
+          image:
+            'https://img.lovepik.com/free-png/20220124/lovepik-christmas-hat-png-image_401650443_wh860.png',
+          price: 2,
+        },
+        {
+          image:
+            'https://w7.pngwing.com/pngs/484/443/png-transparent-gummy-bear-gummy-bear-sweet-candy-food-jelly-thumbnail.png',
+          price: 1,
+        },
+      ];
+
+      // 코인 수를 업데이트하는 함수
+      function updateCoinCount() {
+        const coinCount = document.getElementById('coinCount');
+        coinCount.innerText = `코인: ${coins}`;
+      }
+
+      // 아이템을 화면에 추가하는 함수
+      function displayItems() {
+        const itemContainer = document.getElementById('itemContainer');
+
+        items.forEach((item, index) => {
+          const itemDiv = document.createElement('div');
+          itemDiv.classList.add('item');
+
+          const img = document.createElement('img');
+          img.src = item.image;
+          img.alt = '아이템 이미지';
+
+          const price = document.createElement('p');
+          price.classList.add('price');
+          price.innerText = `${item.price} 코인`;
+
+          const buyButton = document.createElement('button');
+          buyButton.classList.add('buy-button');
+          buyButton.innerText = '구매하기';
+          buyButton.onclick = () => {
+            if (coins >= item.price) {
+              coins -= item.price;
+              updateCoinCount();
+              buyButton.disabled = true;
+              buyButton.innerText = '구매 완료';
+            } else {
+              alert('코인이 부족합니다.');
+            }
+          };
+
+          itemDiv.appendChild(img);
+          itemDiv.appendChild(price);
+          itemDiv.appendChild(buyButton);
+          itemContainer.appendChild(itemDiv);
+        });
+      }
+
+      // 페이지가 로드되면 아이템을 표시
+      window.onload = () => {
+        updateCoinCount();
+        displayItems();
+      };
+    </script>
+  </body>
+</html>

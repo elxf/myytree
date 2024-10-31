@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Note+Sans+KR:wght@400&display=swap');
+
+/* 기본 스타일 초기화 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* 요소의 패딩과 테두리를 포함한 총 크기 계산 */
+}
+
+.outer-container {
+  width: 90%; /* 전체 너비의 90% */
+  max-width: 800px; /* 최대 너비 설정 */
+  border-radius: 12px; /* 둥근 모서리 */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* 그림자 효과 */
+  background-color: #ffffff; /* 배경 색상 */
+  padding: 220px 50px; /* 상하 내부 여백을 늘림 */
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 요소 배치 */
+  align-items: center; /* 가로 중앙 정렬 */
+  margin: 100px auto; /* 상하 여백 100px, 좌우 중앙 정렬 */
+}
+
+body {
+  font-family: 'Note Sans KR', sans-serif; /* 폰트 설정 */
+  display: flex;
+  flex-direction: column; /* 세로 방향으로 요소 배치 */
+  justify-content: center; /* 세로 중앙 정렬 */
+  align-items: center; /* 가로 중앙 정렬 */
+  height: 100vh; /* 화면 전체 높이 사용 */
+  background: #f7f7f7; /* 배경 색상 설정 */
+}
+
+h1 {
+  color: #5d3b0f; /* 제목 색상 설정 */
+  margin-bottom: 40px; /* 제목과 입력 필드 간의 여백 조정 */
+  text-align: center; /* 제목 중앙 정렬 */
+  font-size: 36px; /* 제목 글자 크기 조정 */
+}
+
+.login-form {
+  position: relative;
+  z-index: 2;
+  border: 2px solid #5d3b0f; /* 전체 폼 테두리 추가 */
+  border-radius: 8px; /* 모서리 둥글게 처리 */
+  padding: 20px; /* 내부 여백 */
+  background: rgba(255, 255, 255, 0.8); /* 배경 색상 조정 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 전체 폼에 그림자 추가 */
+}
+
+.int-area {
+  position: relative;
+  margin-bottom: 20px; /* 입력 필드와 버튼 간의 여백 */
+  width: 300px; /* 입력 필드의 너비 설정 */
+}
+
+.int-area input {
+  width: 100%; /* 입력 필드 너비를 부모 요소에 맞춤 */
+  padding: 15px; /* 입력 필드 안쪽 여백 */
+  background: #fff; /* 입력 필드 배경 색상 */
+  border: 2px solid #ddd; /* 입력 필드 테두리 */
+  border-radius: 4px; /* 모서리 둥글게 처리 */
+  font-size: 18px; /* 입력 글자 크기 */
+  color: #333; /* 입력 글자 색상 */
+  outline: none; /* 포커스 시 기본 테두리 제거 */
+  transition: border-color 0.3s, box-shadow 0.3s; /* 테두리 색상 및 그림자 변화에 애니메이션 적용 */
+}
+
+.int-area input:focus {
+  border-color: #5d3b0f; /* 포커스 시 테두리 색상 변경 */
+  box-shadow: 0 0 5px rgba(93, 59, 15, 0.5); /* 포커스 시 그림자 추가 */
+}
+
+.int-area label {
+  position: absolute; /* 레이블을 입력 필드 위에 배치 */
+  left: 15px; /* 왼쪽 여백 */
+  top: 15px; /* 위쪽 여백 */
+  font-size: 16px; /* 레이블 글자 크기 */
+  color: #aaa; /* 레이블 색상 */
+  transition: 0.3s; /* 이동 시 애니메이션 적용 */
+}
+
+.int-area input:focus + label,
+.int-area input:valid + label {
+  top: -20px; /* 입력 필드 포커스 시 레이블 위로 이동 */
+  font-size: 12px; /* 레이블 글자 크기 줄임 */
+  color: #5d3b0f; /* 포커스 시 레이블 색상 변경 */
+}
+
+.btn-area {
+  width: 300px; /* 버튼의 너비 설정 */
+  text-align: center; /* 버튼 중앙 정렬 */
+}
+
+button {
+  width: 100%; /* 버튼 너비를 부모 요소에 맞춤 */
+  padding: 15px; /* 버튼 안쪽 여백 */
+  font-size: 18px; /* 버튼 글자 크기 */
+  color: #fff; /* 버튼 글자 색상 */
+  background-color: #5d3b0f; /* 버튼 배경 색상 */
+  border: 2px solid #5d3b0f; /* 버튼 테두리 추가 */
+  border-radius: 4px; /* 버튼 모서리 둥글게 처리 */
+  cursor: pointer; /* 커서를 손 모양으로 변경 */
+  transition: background-color 0.3s, transform 0.3s; /* 배경 색상 변화 및 크기 변화에 애니메이션 적용 */
+}
+
+button:hover {
+  background-color: #4a2c0c; /* 버튼 호버 시 배경 색상 변경 */
+  transform: translateY(-2px); /* 버튼 호버 시 살짝 위로 이동 */
+}
+
+button:active {
+  transform: translateY(0); /* 클릭 시 버튼 원래 위치로 복원 */
+}

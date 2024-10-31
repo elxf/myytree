@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9; /* 더 밝은 배경색 */
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px; /* 부드러운 모서리 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 깊이감 있는 그림자 */
+}
+
+h1 {
+  text-align: center; /* 제목 중앙 정렬 */
+  color: #5d3b0f; /* 제목 색상 */
+  margin-bottom: 20px; /* 제목과 내용 간 여백 */
+}
+
+.activity-box {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+}
+
+.activity-box ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex; /* 수평으로 나열 */
+  flex-wrap: wrap; /* 줄 바꿈 가능 */
+  justify-content: center; /* 중앙 정렬 */
+  align-items: center; /* 중앙 정렬 */
+}
+
+.activity-box li {
+  margin: 15px; /* 리스트 항목 간의 여백 */
+  border: 2px solid #5d3b0f; /* 테두리 색상 */
+  border-radius: 10px; /* 둥근 모서리 */
+  padding: 20px; /* 항목 내부 패딩 */
+  width: 100%; /* 항목 너비 설정 */
+  max-width: 280px; /* 최대 너비 설정 */
+  text-align: center; /* 항목 중앙 정렬 */
+  background-color: #fff; /* 배경색을 흰색으로 설정 */
+  transition: transform 0.3s, box-shadow 0.3s; /* 부드러운 변형 효과 */
+}
+
+.activity-box li:hover {
+  transform: translateY(-5px); /* 호버 시 약간 위로 이동 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* 호버 시 그림자 강조 */
+}
+
+.activity-box a {
+  text-decoration: none;
+  color: #5d3b0f; /* 링크 색상 */
+  font-weight: bold; /* 강조를 위한 굵게 */
+}
+
+.activity-box a:hover {
+  text-decoration: underline;
+  color: #4a2c0c; /* 호버 시 링크 색상 변경 */
+}

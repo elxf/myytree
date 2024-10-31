@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Rank.css" />
+    <title>활동 인증 랭킹</title>
+  </head>
+  <body>
+    <h1>활동 인증 랭킹</h1>
+
+    <form id="rankingForm">
+      <input type="text" id="name" placeholder="이름" required />
+      <input
+        type="number"
+        id="count"
+        placeholder="인증 횟수"
+        required
+        min="1"
+      />
+      <input type="submit" value="랭킹 추가" />
+    </form>
+
+    <table id="rankingTable">
+      <thead>
+        <tr>
+          <th>순위</th>
+          <th>이름</th>
+          <th>인증 횟수</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 초기 데이터 없음 -->
+      </tbody>
+    </table>
+
+    <script>
+      document
+        .getElementById('rankingForm')
+        .addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          const name = document.getElementById('name').value;
+          const count = parseInt(document.getElementById('count').value);
+
+          const newRow = document.createElement('tr');
+          newRow.innerHTML = `<td></td><td>${name}</td><td>${count}</td>`;
+          document.querySelector('#rankingTable tbody').appendChild(newRow);
+
+          // 랭킹 업데이트
+          updateRanking();
+          this.reset();
+        });
+
+      function updateRanking() {
+        const rows = Array.from(
+          document.querySelectorAll('#rankingTable tbody tr')
+        );
+        rows.sort((a, b) => {
+          return (
+            parseInt(b.cells[2].innerText) - parseInt(a.cells[2].innerText)
+          );
+        });
+
+        rows.forEach((row, index) => {
+          row.cells[0].innerText = index + 1; // 순위 업데이트
+        });
+      }
+    </script>
+  </body>
+</html>

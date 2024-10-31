@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실천 활동</title>
+    <link rel="stylesheet" href="Photo.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>실천 활동</h1>
+      <div class="activity-box">
+        <ul id="activity-list">
+          <li><a href="Photo.html">텀블러 사용</a></li>
+          <li><a href="Photo.html">다회용기 포장</a></li>
+          <li><a href="Photo.html">올바른 분리수거 하기</a></li>
+          <li><a href="Photo.html">빨대 안 쓰기</a></li>
+          <li><a href="Photo.html">등하교 걸어서 하기</a></li>
+          <li><a href="Photo.html">등하교 대중교통 이용하기</a></li>
+          <li><a href="Photo.html">잔반 남기지 않기</a></li>
+          <li><a href="Photo.html">학교 산책하며 줍깅 (줍기 + 조깅)</a></li>
+          <li><a href="Photo.html">친환경 인증 마크 제품 사용</a></li>
+        </ul>
+      </div>
+    </div>
+    <script>
+      const activityList = document.getElementById('activity-list');
+      const usedActivities =
+        JSON.parse(localStorage.getItem('usedActivities')) || {};
+
+      // 비활성화된 링크 설정
+      for (const activity in usedActivities) {
+        if (usedActivities[activity]) {
+          const link = activityList.querySelector(`a[href*="${activity}"]`);
+          if (link) {
+            link.parentElement.style.pointerEvents = 'none'; // 클릭 비활성화
+            link.style.color = 'gray'; // 색상 변경
+          }
+        }
+      }
+
+      // 링크 클릭 이벤트 리스너
+      activityList.addEventListener('click', function (event) {
+        const target = event.target.closest('a');
+        if (target) {
+          const activity = target.href.split('=')[1];
+          usedActivities[activity] = true; // 클릭한 활동 기록
+          localStorage.setItem(
+            'usedActivities',
+            JSON.stringify(usedActivities)
+          );
+
+          // 클릭 비활성화
+          target.parentElement.style.pointerEvents = 'none'; // 클릭 비활성화
+          target.style.color = 'gray'; // 색상 변경
+
+          // 자정에 활성화하도록 설정
+          const now = new Date();
+          const midnight = new Date();
+          midnight.setHours(24, 0, 0, 0); // 자정 설정
+
+          const timeUntilMidnight = midnight - now; // 자정까지 남은 시간
+
+          setTimeout(() => {
+            usedActivities[activity] = false; // 자정 지나면 비활성화 해제
+            localStorage.setItem(
+              'usedActivities',
+              JSON.stringify(usedActivities)
+            );
+            target.parentElement.style.pointerEvents = ''; // 클릭 활성화
+            target.style.color = ''; // 색상 원래대로
+          }, timeUntilMidnight);
+        }
+      });
+    </script>
+  </body>
+</html>
